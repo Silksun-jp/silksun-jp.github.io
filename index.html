@@ -45,6 +45,59 @@
       overflow-x: hidden;
     }
 
+    /* ========== SPLASH SCREEN ========== */
+    .splash {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .splash.done {
+      opacity: 0; visibility: hidden; pointer-events: none;
+    }
+    .splash-logo-wrap {
+      position: relative; overflow: hidden;
+    }
+    .splash-logo {
+      height: clamp(60px, 12vw, 100px); width: auto;
+      clip-path: inset(0 100% 0 0);
+      animation: splashLogoReveal 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+    }
+    .splash-shimmer {
+      position: absolute;
+      top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(155,27,30,0.08) 40%, rgba(155,27,30,0.15) 50%, rgba(155,27,30,0.08) 60%, transparent 100%);
+      animation: splashShimmer 0.8s ease-in-out 2s forwards;
+      pointer-events: none;
+    }
+    .splash-tagline {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.3em; color: var(--brown-light);
+      margin-top: 20px;
+      opacity: 0; animation: fadeUp 0.6s ease-out 2.2s forwards;
+    }
+    .splash-line {
+      width: 0; height: 1px;
+      background: var(--red-light);
+      margin-top: 16px;
+      animation: splashLine 0.8s ease-out 2.6s forwards;
+    }
+    @keyframes splashLogoReveal {
+      0% { clip-path: inset(0 100% 0 0); }
+      100% { clip-path: inset(0 0% 0 0); }
+    }
+    @keyframes splashShimmer {
+      0% { left: -60%; opacity: 1; }
+      100% { left: 120%; opacity: 0; }
+    }
+    @keyframes splashLine {
+      0% { width: 0; opacity: 0; }
+      100% { width: 60px; opacity: 1; }
+    }
+    /* Lock scroll during splash */
+    body.splash-active { overflow: hidden; }
+
     .section-padding { padding: 100px 24px; }
     .container { max-width: 1000px; margin: 0 auto; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
@@ -56,6 +109,11 @@
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(155, 27, 30, 0.06);
       transition: all 0.4s ease;
+      opacity: 0; transform: translateY(-100%);
+    }
+    body:not(.splash-active) nav {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s, box-shadow 0.4s ease;
     }
     nav.scrolled { box-shadow: 0 2px 30px rgba(42, 31, 26, 0.06); }
     .nav-inner {
@@ -126,7 +184,7 @@
       border: 1px solid rgba(196, 162, 101, 0.5); padding: 8px 22px; margin-bottom: 28px;
       text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
       background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(4px);
-      opacity: 0; animation: fadeUp 0.8s ease-out 2.4s forwards;
+      opacity: 0;
     }
     .hero-logo-wrap {
       margin-bottom: 16px; position: relative; overflow: hidden;
@@ -134,16 +192,19 @@
     .hero-logo-img {
       max-width: clamp(220px, 45vw, 400px); height: auto;
       filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
-      clip-path: inset(0 100% 0 0);
-      animation: logoReveal 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+      opacity: 0;
     }
     .hero-logo-shimmer {
       position: absolute;
       top: 0; left: -100%; width: 60%; height: 100%;
       background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.15) 60%, transparent 100%);
-      animation: shimmerSweep 1s ease-in-out 2s forwards;
       pointer-events: none;
     }
+
+    /* Hero animations triggered after splash */
+    .hero-animate .hero-badge { animation: fadeUp 0.8s ease-out 0.8s forwards; }
+    .hero-animate .hero-logo-img { opacity: 1; clip-path: inset(0 100% 0 0); animation: logoReveal 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s forwards; }
+    .hero-animate .hero-logo-shimmer { animation: shimmerSweep 0.8s ease-in-out 1.4s forwards; }
 
     @keyframes logoReveal {
       0% { clip-path: inset(0 100% 0 0); }
@@ -157,22 +218,27 @@
       font-size: 0.92rem; font-weight: 400; color: rgba(255, 253, 249, 0.85);
       letter-spacing: 0.3em; margin-bottom: 32px;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-      opacity: 0; animation: fadeUp 0.8s ease-out 2.6s forwards;
+      opacity: 0;
     }
     .hero-line { width: 48px; height: 2px; background: var(--red-warm); margin: 0 auto 28px; box-shadow: 0 1px 8px rgba(181, 41, 45, 0.4);
-      opacity: 0; animation: lineExpand 0.6s ease-out 2.9s forwards;
+      opacity: 0;
     }
     .hero-tagline {
       font-size: 1.1rem; font-weight: 400; color: rgba(255, 253, 249, 0.95);
       letter-spacing: 0.14em; line-height: 2;
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-      opacity: 0; animation: fadeUp 0.8s ease-out 3.2s forwards;
+      opacity: 0;
     }
-    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; animation: fadeUp 0.6s ease-out 3.8s forwards; }
+    .hero-animate .hero-subtitle { animation: fadeUp 0.8s ease-out 1s forwards; }
+    .hero-animate .hero-line { animation: lineExpand 0.6s ease-out 1.3s forwards; }
+    .hero-animate .hero-tagline { animation: fadeUp 0.8s ease-out 1.6s forwards; }
+
+    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; opacity: 0; }
+    .hero-animate .hero-scroll { animation: fadeUp 0.6s ease-out 2.2s forwards; }
     .hero-scroll span {
       display: block; width: 1px; height: 48px;
       background: linear-gradient(to bottom, var(--red-warm), transparent);
-      animation: scrollPulse 2s ease-in-out 4s infinite;
+      animation: scrollPulse 2s ease-in-out infinite;
     }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -297,7 +363,17 @@
     }
   </style>
 </head>
-<body>
+<body class="splash-active">
+
+  <!-- SPLASH SCREEN -->
+  <div class="splash" id="splash">
+    <div class="splash-logo-wrap">
+      <img src="logo-black.png" alt="SilkSun" class="splash-logo">
+      <div class="splash-shimmer"></div>
+    </div>
+    <p class="splash-tagline">完全プライベート理美容室</p>
+    <div class="splash-line"></div>
+  </div>
 
   <!-- NAV -->
   <nav id="navbar">
@@ -533,6 +609,16 @@
   </footer>
 
   <script>
+    // Splash screen → Hero transition
+    const splash = document.getElementById('splash');
+    const heroSection = document.querySelector('.hero');
+    setTimeout(() => {
+      splash.classList.add('done');
+      document.body.classList.remove('splash-active');
+      heroSection.classList.add('hero-animate');
+    }, 3800);
+    splash.addEventListener('transitionend', () => { splash.remove(); });
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
 
