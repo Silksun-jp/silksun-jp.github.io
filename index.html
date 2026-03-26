@@ -257,7 +257,7 @@
 
     /* MENU */
     .menu { background: var(--cream); }
-    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 64px; margin-top: 56px; }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px 48px; margin-top: 56px; }
     .menu-category h3 {
       font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400;
       color: var(--red-deep); letter-spacing: 0.08em; margin-bottom: 8px;
@@ -332,6 +332,9 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+    }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -441,16 +444,24 @@
           <h3>Cut</h3>
           <div class="menu-category-line"></div>
           <div class="menu-item">
-            <div><div class="menu-item-name">カット</div><div class="menu-item-detail">シャンプー・ブロー込み</div></div>
-            <span class="menu-item-price">¥0,000</span>
+            <div><div class="menu-item-name">カット</div></div>
+            <span class="menu-item-price">¥4,000</span>
           </div>
           <div class="menu-item">
-            <div><div class="menu-item-name">中高生カット</div></div>
-            <span class="menu-item-price">¥0,000</span>
+            <div><div class="menu-item-name">高校生カット</div></div>
+            <span class="menu-item-price">¥3,520</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">中学生カット</div></div>
+            <span class="menu-item-price">¥2,970</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">小学生カット</div></div>
+            <span class="menu-item-price">¥2,420</span>
           </div>
           <div class="menu-item">
             <div><div class="menu-item-name">小学生以下カット</div></div>
-            <span class="menu-item-price">¥0,000</span>
+            <span class="menu-item-price">¥1,870</span>
           </div>
         </div>
 
@@ -459,15 +470,61 @@
           <div class="menu-category-line"></div>
           <div class="menu-item">
             <div><div class="menu-item-name">カラー</div></div>
-            <span class="menu-item-price">¥0,000〜</span>
+            <span class="menu-item-price">¥6,600〜</span>
           </div>
           <div class="menu-item">
-            <div><div class="menu-item-name">リタッチカラー</div><div class="menu-item-detail">根元のみ</div></div>
-            <span class="menu-item-price">¥0,000〜</span>
+            <div><div class="menu-item-name">リタッチ</div></div>
+            <span class="menu-item-price">¥5,500〜</span>
           </div>
           <div class="menu-item">
             <div><div class="menu-item-name">白髪染め</div></div>
-            <span class="menu-item-price">¥0,000〜</span>
+            <span class="menu-item-price">¥6,600〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">白髪ぼかし</div></div>
+            <span class="menu-item-price">¥5,500〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">Wカラー</div></div>
+            <span class="menu-item-price">¥9,900〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">ブリーチ</div></div>
+            <span class="menu-item-price">¥7,700〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">メッシュ</div></div>
+            <span class="menu-item-price">¥7,700〜</span>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Perm</h3>
+          <div class="menu-category-line"></div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">ベーシックパーマ</div></div>
+            <span class="menu-item-price">¥6,600〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">ハードパーマ</div></div>
+            <span class="menu-item-price">¥7,700〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">ポイントパーマ</div></div>
+            <span class="menu-item-price">¥5,500〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">ストレートパーマ</div></div>
+            <span class="menu-item-price">¥7,700〜</span>
+          </div>
+        </div>
+
+        <div class="menu-category">
+          <h3>Eyelash Perm</h3>
+          <div class="menu-category-line"></div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">まつ毛パーマ</div></div>
+            <span class="menu-item-price">¥4,400〜</span>
           </div>
         </div>
 
@@ -475,16 +532,20 @@
           <h3>Shaving</h3>
           <div class="menu-category-line"></div>
           <div class="menu-item">
-            <div><div class="menu-item-name">お顔剃り（男性）</div></div>
-            <span class="menu-item-price">¥0,000</span>
+            <div><div class="menu-item-name">メンズシェービング</div></div>
+            <span class="menu-item-price">¥1,100〜</span>
           </div>
           <div class="menu-item">
-            <div><div class="menu-item-name">レディースシェービング</div><div class="menu-item-detail">産毛処理・美肌仕上げ</div></div>
-            <span class="menu-item-price">¥0,000</span>
+            <div><div class="menu-item-name">レディースシェービング</div></div>
+            <span class="menu-item-price">¥2,200〜</span>
+          </div>
+          <div class="menu-item">
+            <div><div class="menu-item-name">エステシェービング</div></div>
+            <span class="menu-item-price">¥3,850〜</span>
           </div>
           <div class="menu-item">
             <div><div class="menu-item-name">ブライダルシェービング</div></div>
-            <span class="menu-item-price">¥0,000</span>
+            <span class="menu-item-price">¥6,600</span>
           </div>
         </div>
 
@@ -492,7 +553,7 @@
           <h3>Special</h3>
           <div class="menu-category-line"></div>
           <div class="menu-item">
-            <div><div class="menu-item-name">バリカンアート</div><div class="menu-item-detail">デザインにより応相談</div></div>
+            <div><div class="menu-item-name">バリカンアート</div></div>
             <span class="menu-item-price">要相談</span>
           </div>
           <div class="menu-item">
@@ -501,7 +562,7 @@
           </div>
           <div class="menu-item">
             <div><div class="menu-item-name">着付け</div></div>
-            <span class="menu-item-price">¥0,000〜</span>
+            <span class="menu-item-price">要相談</span>
           </div>
         </div>
 
