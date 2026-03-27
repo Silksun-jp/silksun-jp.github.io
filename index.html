@@ -292,6 +292,16 @@
       flex-direction: column; gap: 4px; font-size: 0.7rem; color: var(--brown-light); letter-spacing: 0.1em;
     }
     .gallery-placeholder-icon { font-size: 1.4rem; opacity: 0.3; }
+    .gallery-insta {
+      text-align: center; margin-top: 32px;
+    }
+    .gallery-insta a {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--red-main); text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 0.06em;
+      transition: color 0.3s;
+    }
+    .gallery-insta a:hover { color: var(--red-deep); }
 
     /* ACCESS */
     .access { background: var(--cream); }
@@ -634,12 +644,13 @@
       <div class="section-line"></div>
       <div class="gallery-grid">
         <div class="gallery-item"><img src="gallery-1.jpg" alt="SilkSun 施術席"></div>
-        <div class="gallery-item"><div class="gallery-placeholder"><span class="gallery-placeholder-icon">✂</span>スタイル作品</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder"><span class="gallery-placeholder-icon">🪒</span>シェービング</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder"><span class="gallery-placeholder-icon">🎨</span>バリカンアート</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder"><span class="gallery-placeholder-icon">👘</span>着付け</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder"><span class="gallery-placeholder-icon">🎪</span>イベント出店</div></div>
       </div>
+      <p class="gallery-insta">
+        <a href="https://www.instagram.com/silksun.jp" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          もっと見る @silksun.jp
+        </a>
+      </p>
     </div>
   </section>
 
